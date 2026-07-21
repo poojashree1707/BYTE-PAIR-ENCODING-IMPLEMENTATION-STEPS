@@ -2,8 +2,9 @@
 
 ## Project Overview
 
-This project implements the **Byte-Pair Encoding (BPE)** algorithm from scratch using **Python** and **NumPy**. BPE is a subword tokenization technique widely used in modern Natural Language Processing (NLP) models such as GPT, BERT, and RoBERTa. The tokenizer learns frequently occurring character pairs and merges them iteratively to create subword tokens.
+This project implements a Custom Byte Pair Encoding (BPE) Tokenizer from scratch using Python and a simple Next Word Prediction model. The BPE tokenizer learns subword vocabulary by repeatedly merging the most frequent adjacent character pairs, while the prediction model suggests the next word based on previously seen word sequences.
 
+#### The project demonstrates fundamental Natural Language Processing (NLP) concepts without relying on external machine learning libraries.
 ---
 
 ## Objective
@@ -25,24 +26,27 @@ The objective of this project is to:
 - Builds initial character-level vocabulary.
 - Finds the most frequent adjacent symbol pairs.
 - Learns merge rules iteratively.
-- Generates subword vocabulary.
 - Encodes new words using learned merge rules.
 - Decodes encoded tokens back into original words.
 - Displays vocabulary statistics using NumPy.
 
----
+## Next Word Prediction
+
+- Builds a simple language model from a text corpus.
+- Stores relationships between consecutive words.
+- Predicts the most likely next word.
+- Interactive command-line prediction.
+- Simple and lightweight implementation.
 
 ## Project Structure
 
-```
-BPE-Tokenizer/
-│
-├── corpus.txt
-├── bpe_tokenizer.py
-└── README.md
-```
+├── corpus.txt  
 
----
+├── bpe_tokenizer.py 
+
+├── next_word_prediction.py 
+
+└── README.md
 
 ## Corpus Used
 
@@ -56,13 +60,27 @@ new
 newer
 widest
 ```
-
-Each word is treated as a sequence of characters followed by the special end-of-word token:
+### Learned Merge Rules
 
 ```
-l o w </w>
-l o w e r </w>
+1. ('l', 'o')
+2. ('lo', 'w')
+3. ('low', 'e')
+4. ('r', '</w>')
+5. ('s', 't')
+6. ('st', '</w>')
+7. ('n', 'e')
+8. ('ne', 'w')
+9. ('low', '</w>')
+10. ('lowe', 'r</w>')
 ```
+
+## Example Next Word Prediction
+## Input
+### Enter text:
+### i love
+## Output
+### Next Word: you
 
 ---
 
@@ -82,22 +100,6 @@ l o w e r </w>
 
 ---
 
-## Sample Output
-
-### Learned Merge Rules
-
-```
-1. ('l', 'o')
-2. ('lo', 'w')
-3. ('low', 'e')
-4. ('r', '</w>')
-5. ('s', 't')
-6. ('st', '</w>')
-7. ('n', 'e')
-8. ('ne', 'w')
-9. ('low', '</w>')
-10. ('lowe', 'r</w>')
-```
 ## Applications
 
 - Natural Language Processing
@@ -119,9 +121,8 @@ l o w e r </w>
 
 ---
 
-## Conclusion
+### Conclusion
 
-This project demonstrates how Byte-Pair Encoding (BPE) builds a subword vocabulary by repeatedly merging the most frequent adjacent character pairs. The implementation provides a clear understanding of tokenization, vocabulary construction, encoding, and decoding, making it an excellent educational project for learning the fundamentals of NLP tokenization techniques.
+#### This project successfully implements a Byte Pair Encoding (BPE) Tokenizer and a Next Word Prediction model using Python. The BPE tokenizer learns subword vocabulary through frequent pair merging, while the prediction model suggests the most likely next word based on the training corpus. Together, they demonstrate the basic concepts of Natural Language Processing (NLP) and provide a foundation for building more advanced language models.
 
----
 
